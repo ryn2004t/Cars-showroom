@@ -28,7 +28,7 @@ function csrf_input_field() {
 }
 
 /**
- * Verify CSRF token
+ * Verify CSRF token - returns boolean
  */
 function verify_csrf_token() {
     if (!isset($_SESSION['csrf_token']) || !isset($_POST['csrf_token'])) {
@@ -36,6 +36,17 @@ function verify_csrf_token() {
     }
     
     return hash_equals($_SESSION['csrf_token'], $_POST['csrf_token']);
+}
+
+/**
+ * Verify CSRF token with error message (legacy support)
+ */
+function verify_csrf_token_or_die() {
+    if (!verify_csrf_token()) {
+        echo "<p style='color:red;'>⛔ CSRF token mismatch. Try reloading the page.</p>";
+        exit;
+    }
+    return true;
 }
 
 /**
