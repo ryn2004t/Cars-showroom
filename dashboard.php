@@ -15,8 +15,11 @@ require_once 'csrf.php';
 
 // Initialize session and security
 session_start();
-ini_set('display_errors', 0);
-error_reporting(0);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// TEMPORARY: Set to true to disable CSRF for testing (REMOVE in production)
+define('DISABLE_CSRF_FOR_TESTING', false);
 
 // Enhanced Security Headers
 header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com cdnjs.cloudflare.com; font-src 'self' cdn.jsdelivr.net fonts.gstatic.com cdnjs.cloudflare.com; img-src 'self' data: https:;");
@@ -338,9 +341,24 @@ $summaryData = [];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
-        // Verify CSRF token
-        if (!verify_csrf_token()) {
-            throw new Exception("Invalid CSRF token");
+        // Debug CSRF token (remove in production)
+        error_log("CSRF Debug - Session token: " . ($_SESSION['csrf_token'] ?? 'NOT SET'));
+        error_log("CSRF Debug - POST token: " . ($_POST['csrf_token'] ?? 'NOT SET'));
+        
+        // Verify CSRF token (unless disabled for testing)
+        if (!DISABLE_CSRF_FOR_TESTING && !verify_csrf_token()) {
+            // More detailed CSRF error for debugging
+            $csrfError = "CSRF validation failed. ";
+            if (!isset($_SESSION['csrf_token'])) {
+                $csrfError .= "No session token found. ";
+            }
+            if (!isset($_POST['csrf_token'])) {
+                $csrfError .= "No POST token found. ";
+            }
+            if (isset($_SESSION['csrf_token']) && isset($_POST['csrf_token'])) {
+                $csrfError .= "Tokens don't match. ";
+            }
+            throw new Exception($csrfError . "Please refresh the page and try again.");
         }
         
         // Rate limiting (basic implementation)
@@ -1123,6 +1141,12 @@ if (empty($topBrands)) {
             <div class="dashboard-header animate-fade-in">
                 <h1><i class="fas fa-car"></i> Car Management Dashboard</h1>
                 <p class="subtitle">Professional inventory and financial tracking system</p>
+                <?php if (DISABLE_CSRF_FOR_TESTING): ?>
+                    <div class="alert alert-warning mt-3">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>TESTING MODE:</strong> CSRF protection is disabled. Remember to enable it in production!
+                    </div>
+                <?php endif; ?>
             </div>
 
             <!-- Navigation Cards -->
