@@ -268,35 +268,35 @@ try {
             
             <input type="number" name="ex_cost" placeholder="External Costs ($)" step="0.01" />
             
-            <input type="text" name="color" placeholder="Color" />
+            <input type="text" name="color" placeholder="Color (required)" required />
             
             <div class="input-container">
-                <input type="date" name="buying_date" data-placeholder="Purchase Date" />
-                <div class="alert">Purchase Date</div>
+                <input type="date" name="buying_date" data-placeholder="Purchase Date (optional)" />
+                <div class="alert">Purchase Date (optional)</div>
             </div>
             
             <div class="input-container">
-                <input type="date" name="selling_date" data-placeholder="Date of Selling" />
-                <div class="alert">Date of Selling</div>
+                <input type="date" name="selling_date" data-placeholder="Date of Selling (optional)" />
+                <div class="alert">Date of Selling (optional)</div>
             </div>
             
-            <select name="source">
-                <option value="">Select Source</option>
+            <select name="source" required>
+                <option value="">Select Source (required)</option>
                 <?php foreach ($sources as $source): ?>
                     <option value="<?= htmlspecialchars($source) ?>"><?= htmlspecialchars($source) ?></option>
                 <?php endforeach; ?>
             </select>
             
-            <select name="status">
-                <option value="">Select Status</option>
+            <select name="status" required>
+                <option value="">Select Status (required)</option>
                 <?php foreach ($statuses as $status): ?>
                     <option value="<?= htmlspecialchars($status) ?>"><?= htmlspecialchars($status) ?></option>
                 <?php endforeach; ?>
             </select>
             
-            <input type="number" name="mileage" placeholder="Mileage" />
+            <input type="number" name="mileage" placeholder="Mileage (required)" required min="0" />
             
-            <input type="text" name="maintenance" placeholder="Maintenance Notes" />
+            <input type="text" name="maintenance" placeholder="Maintenance Notes (required)" required />
             
             <input type="number" name="jamarik" placeholder="Customs Duties ($)" step="0.01" />
             
@@ -362,17 +362,20 @@ try {
                 // Sanitize and validate inputs
                 $chis_nmbr = sanitize_input($_POST['chis_nmbr']);
                 $brand = sanitize_input($_POST['brand']);
-                $model = sanitize_input($_POST['model']);
-                $color = sanitize_input($_POST['color']);
-                $source = sanitize_input($_POST['source']);
-                $status = sanitize_input($_POST['status']);
-                $maintenance = sanitize_input($_POST['maintenance']);
+                $model = sanitize_input($_POST['model']) ?: '';  // Default to empty string
+                $color = sanitize_input($_POST['color']) ?: 'Not specified';  // Default value
+                $source = sanitize_input($_POST['source']) ?: 'Not specified';  // Default value
+                $status = sanitize_input($_POST['status']) ?: 'Available';  // Default value
+                $maintenance = sanitize_input($_POST['maintenance']) ?: 'No maintenance notes';  // Default value
                 $buying_date = sanitize_input($_POST['buying_date']);
                 $selling_date = sanitize_input($_POST['selling_date']);
 
-                // Validate required fields
-                if (empty($chis_nmbr) || empty($brand)) {
-                    throw new Exception("Chassis number and brand are required fields.");
+                // Validate required fields (based on NOT NULL constraints)
+                if (empty($chis_nmbr)) {
+                    throw new Exception("Chassis number is required.");
+                }
+                if (empty($brand)) {
+                    throw new Exception("Brand is required.");
                 }
 
                 // Validate numeric fields
@@ -380,11 +383,24 @@ try {
                 $validated_numbers = [];
 
                 foreach ($numeric_fields as $field) {
-                    $value = filter_var($_POST[$field] ?? 0, FILTER_VALIDATE_FLOAT);
-                    if ($value === false) {
-                        throw new Exception("Invalid value for " . ucfirst(str_replace('_', ' ', $field)) . ". Please enter a valid number.");
+                    $input_value = $_POST[$field] ?? '';
+                    
+                    // Handle empty values for optional fields
+                    if ($input_value === '' || $input_value === null) {
+                        if ($field === 'mileage') {
+                            // Mileage is NOT NULL, so default to 0
+                            $validated_numbers[$field] = 0;
+                        } else {
+                            // Other fields can be 0
+                            $validated_numbers[$field] = 0;
+                        }
+                    } else {
+                        $value = filter_var($input_value, FILTER_VALIDATE_FLOAT);
+                        if ($value === false) {
+                            throw new Exception("Invalid value for " . ucfirst(str_replace('_', ' ', $field)) . ". Please enter a valid number.");
+                        }
+                        $validated_numbers[$field] = $value;
                     }
-                    $validated_numbers[$field] = $value;
                 }
 
                 // Calculate Lebanese Pound equivalents
@@ -511,16 +527,52 @@ try {
                 form.addEventListener('submit', function(e) {
                     const chassis = form.querySelector('input[name="chis_nmbr"]').value.trim();
                     const brand = form.querySelector('select[name="brand"]').value;
+                    const color = form.querySelector('input[name="color"]').value.trim();
+                    const source = form.querySelector('select[name="source"]').value;
+                    const status = form.querySelector('select[name="status"]').value;
+                    const mileage = form.querySelector('input[name="mileage"]').value.trim();
+                    const maintenance = form.querySelector('input[name="maintenance"]').value.trim();
                     
+                    // Validate required fields
                     if (!chassis) {
                         e.preventDefault();
                         alert('Please enter a chassis number.');
+                        form.querySelector('input[name="chis_nmbr"]').focus();
                         return;
                     }
                     
                     if (!brand) {
                         e.preventDefault();
                         alert('Please select a brand.');
+                        form.querySelector('select[name="brand"]').focus();
+                        return;
+                    }
+                    
+                    if (!color) {
+                        e.preventDefault();
+                        alert('Please enter a color.');
+                        form.querySelector('input[name="color"]').focus();
+                        return;
+                    }
+                    
+                    if (!source) {
+                        e.preventDefault();
+                        alert('Please select a source.');
+                        form.querySelector('select[name="source"]').focus();
+                        return;
+                    }
+                    
+                    if (!status) {
+                        e.preventDefault();
+                        alert('Please select a status.');
+                        form.querySelector('select[name="status"]').focus();
+                        return;
+                    }
+                    
+                    if (!maintenance) {
+                        e.preventDefault();
+                        alert('Please enter maintenance notes.');
+                        form.querySelector('input[name="maintenance"]').focus();
                         return;
                     }
 
