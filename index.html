@@ -5,421 +5,512 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elite Motors - Premium Car Showroom</title>
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- CSS -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2><i class="fas fa-car"></i> Elite Motors</h2>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#cars" class="nav-link">Cars</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="car.php" class="nav-link admin-link">
-                    <i class="fas fa-cog"></i> Dashboard
-                </a>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <i class="fas fa-car text-primary me-2"></i>Elite Motors
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#cars">Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a href="car.php" class="btn btn-primary px-4 py-2 rounded-pill">
+                            <i class="fas fa-cog me-2"></i>Dashboard
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Experience <span class="gradient-text">Luxury</span><br>
-                    Drive <span class="gradient-text">Excellence</span>
-                </h1>
-                <p class="hero-description">
-                    Discover our collection of premium vehicles. From luxury sedans to powerful sports cars, 
-                    find your perfect match at Elite Motors.
-                </p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">
-                        <i class="fas fa-car"></i> View Collection
-                    </button>
-                    <button class="btn btn-secondary">
-                        <i class="fas fa-play"></i> Watch Video
-                    </button>
+    <section id="home" class="hero-section position-relative overflow-hidden">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="row min-vh-100 align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-content text-white">
+                        <h1 class="display-3 fw-bold mb-4">
+                            Experience <span class="text-warning">Luxury</span><br>
+                            Drive <span class="text-warning">Excellence</span>
+                        </h1>
+                        <p class="lead mb-5 opacity-90">
+                            Discover our collection of premium vehicles. From luxury sedans to powerful sports cars, 
+                            find your perfect match at Elite Motors.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <button class="btn btn-warning btn-lg px-5 py-3 rounded-pill fw-semibold">
+                                <i class="fas fa-car me-2"></i>View Collection
+                            </button>
+                            <button class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold">
+                                <i class="fas fa-play me-2"></i>Watch Video
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <div class="car-showcase">
-                    <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                         alt="Luxury Car" class="hero-car">
-                    <div class="floating-card">
-                        <div class="card-content">
-                            <h3>2024 Model</h3>
-                            <p>Starting from $89,999</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>5.0</span>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="hero-image position-relative">
+                        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                             alt="Luxury Car" class="img-fluid rounded-4 shadow-lg car-hover">
+                        <div class="floating-card position-absolute bottom-0 end-0 bg-white p-4 rounded-4 shadow-lg m-4">
+                            <h5 class="fw-bold text-dark mb-2">2024 Model</h5>
+                            <p class="text-primary fw-semibold mb-2 fs-5">Starting from $89,999</p>
+                            <div class="d-flex align-items-center">
+                                <div class="text-warning me-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="fw-semibold">5.0</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-background">
-            <div class="bg-shape shape-1"></div>
-            <div class="bg-shape shape-2"></div>
-            <div class="bg-shape shape-3"></div>
-        </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
+    <section class="py-5 bg-light">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-car"></i>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="text-center p-4 bg-white rounded-4 shadow-sm h-100 stat-card">
+                        <div class="stat-icon bg-primary bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                            <i class="fas fa-car fs-2"></i>
+                        </div>
+                        <h3 class="fw-bold text-primary mb-2 counter" data-target="250">0</h3>
+                        <p class="text-muted mb-0">Cars in Stock</p>
                     </div>
-                    <h3 class="stat-number" data-target="250">0</h3>
-                    <p class="stat-label">Cars in Stock</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center p-4 bg-white rounded-4 shadow-sm h-100 stat-card">
+                        <div class="stat-icon bg-success bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                            <i class="fas fa-users fs-2"></i>
+                        </div>
+                        <h3 class="fw-bold text-success mb-2 counter" data-target="15000">0</h3>
+                        <p class="text-muted mb-0">Happy Customers</p>
                     </div>
-                    <h3 class="stat-number" data-target="15000">0</h3>
-                    <p class="stat-label">Happy Customers</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-award"></i>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center p-4 bg-white rounded-4 shadow-sm h-100 stat-card">
+                        <div class="stat-icon bg-warning bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                            <i class="fas fa-award fs-2"></i>
+                        </div>
+                        <h3 class="fw-bold text-warning mb-2 counter" data-target="25">0</h3>
+                        <p class="text-muted mb-0">Years Experience</p>
                     </div>
-                    <h3 class="stat-number" data-target="25">0</h3>
-                    <p class="stat-label">Years Experience</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center p-4 bg-white rounded-4 shadow-sm h-100 stat-card">
+                        <div class="stat-icon bg-info bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                            <i class="fas fa-map-marker-alt fs-2"></i>
+                        </div>
+                        <h3 class="fw-bold text-info mb-2 counter" data-target="8">0</h3>
+                        <p class="text-muted mb-0">Locations</p>
                     </div>
-                    <h3 class="stat-number" data-target="8">0</h3>
-                    <p class="stat-label">Locations</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Cars Section -->
-    <section id="cars" class="featured-cars">
+    <section id="cars" class="py-5">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured <span class="gradient-text">Vehicles</span></h2>
-                <p class="section-description">Explore our handpicked selection of premium automobiles</p>
+            <div class="row mb-5">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold mb-3">Featured <span class="text-primary">Vehicles</span></h2>
+                    <p class="lead text-muted">Explore our handpicked selection of premium automobiles</p>
+                </div>
             </div>
             
-            <div class="car-filters">
-                <button class="filter-btn active" data-filter="all">All Cars</button>
-                <button class="filter-btn" data-filter="luxury">Luxury</button>
-                <button class="filter-btn" data-filter="sports">Sports</button>
-                <button class="filter-btn" data-filter="suv">SUV</button>
-                <button class="filter-btn" data-filter="electric">Electric</button>
-            </div>
-
-            <div class="cars-grid">
-                <div class="car-card" data-category="luxury">
-                    <div class="car-image">
-                        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mercedes S-Class">
-                        <div class="car-badge">New</div>
-                        <div class="car-overlay">
-                            <button class="btn btn-white">View Details</button>
-                        </div>
-                    </div>
-                    <div class="car-info">
-                        <h3 class="car-name">Mercedes S-Class</h3>
-                        <p class="car-type">Luxury Sedan</p>
-                        <div class="car-features">
-                            <span><i class="fas fa-gas-pump"></i> V8 Engine</span>
-                            <span><i class="fas fa-tachometer-alt"></i> 463 HP</span>
-                            <span><i class="fas fa-users"></i> 5 Seats</span>
-                        </div>
-                        <div class="car-price">
-                            <span class="price">$124,999</span>
-                            <button class="btn-favorite">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="car-card" data-category="sports">
-                    <div class="car-image">
-                        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Porsche 911">
-                        <div class="car-badge">Popular</div>
-                        <div class="car-overlay">
-                            <button class="btn btn-white">View Details</button>
-                        </div>
-                    </div>
-                    <div class="car-info">
-                        <h3 class="car-name">Porsche 911</h3>
-                        <p class="car-type">Sports Car</p>
-                        <div class="car-features">
-                            <span><i class="fas fa-gas-pump"></i> Turbo</span>
-                            <span><i class="fas fa-tachometer-alt"></i> 443 HP</span>
-                            <span><i class="fas fa-users"></i> 2 Seats</span>
-                        </div>
-                        <div class="car-price">
-                            <span class="price">$169,999</span>
-                            <button class="btn-favorite">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="car-card" data-category="suv">
-                    <div class="car-image">
-                        <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Range Rover">
-                        <div class="car-badge">Premium</div>
-                        <div class="car-overlay">
-                            <button class="btn btn-white">View Details</button>
-                        </div>
-                    </div>
-                    <div class="car-info">
-                        <h3 class="car-name">Range Rover Sport</h3>
-                        <p class="car-type">Luxury SUV</p>
-                        <div class="car-features">
-                            <span><i class="fas fa-gas-pump"></i> V8 Hybrid</span>
-                            <span><i class="fas fa-tachometer-alt"></i> 518 HP</span>
-                            <span><i class="fas fa-users"></i> 7 Seats</span>
-                        </div>
-                        <div class="car-price">
-                            <span class="price">$139,999</span>
-                            <button class="btn-favorite">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="car-card" data-category="electric">
-                    <div class="car-image">
-                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Tesla Model S">
-                        <div class="car-badge eco">Eco</div>
-                        <div class="car-overlay">
-                            <button class="btn btn-white">View Details</button>
-                        </div>
-                    </div>
-                    <div class="car-info">
-                        <h3 class="car-name">Tesla Model S</h3>
-                        <p class="car-type">Electric Sedan</p>
-                        <div class="car-features">
-                            <span><i class="fas fa-bolt"></i> Electric</span>
-                            <span><i class="fas fa-tachometer-alt"></i> 1020 HP</span>
-                            <span><i class="fas fa-users"></i> 5 Seats</span>
-                        </div>
-                        <div class="car-price">
-                            <span class="price">$109,999</span>
-                            <button class="btn-favorite">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="car-card" data-category="luxury">
-                    <div class="car-image">
-                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="BMW 7 Series">
-                        <div class="car-overlay">
-                            <button class="btn btn-white">View Details</button>
-                        </div>
-                    </div>
-                    <div class="car-info">
-                        <h3 class="car-name">BMW 7 Series</h3>
-                        <p class="car-type">Executive Sedan</p>
-                        <div class="car-features">
-                            <span><i class="fas fa-gas-pump"></i> V8 Twin-Turbo</span>
-                            <span><i class="fas fa-tachometer-alt"></i> 523 HP</span>
-                            <span><i class="fas fa-users"></i> 5 Seats</span>
-                        </div>
-                        <div class="car-price">
-                            <span class="price">$119,999</span>
-                            <button class="btn-favorite">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="car-card" data-category="sports">
-                    <div class="car-image">
-                        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Audi R8">
-                        <div class="car-badge">Limited</div>
-                        <div class="car-overlay">
-                            <button class="btn btn-white">View Details</button>
-                        </div>
-                    </div>
-                    <div class="car-info">
-                        <h3 class="car-name">Audi R8</h3>
-                        <p class="car-type">Supercar</p>
-                        <div class="car-features">
-                            <span><i class="fas fa-gas-pump"></i> V10</span>
-                            <span><i class="fas fa-tachometer-alt"></i> 602 HP</span>
-                            <span><i class="fas fa-users"></i> 2 Seats</span>
-                        </div>
-                        <div class="car-price">
-                            <span class="price">$199,999</span>
-                            <button class="btn-favorite">
-                                <i class="far fa-heart"></i>
-                            </button>
-                        </div>
+            <!-- Car Filters -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center flex-wrap gap-2" data-aos="fade-up" data-aos-delay="200">
+                        <button class="btn btn-outline-primary filter-btn active" data-filter="all">All Cars</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="luxury">Luxury</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="sports">Sports</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="suv">SUV</button>
+                        <button class="btn btn-outline-primary filter-btn" data-filter="electric">Electric</button>
                     </div>
                 </div>
             </div>
 
-            <div class="view-all">
-                <button class="btn btn-outline">View All Cars <i class="fas fa-arrow-right"></i></button>
+            <!-- Cars Grid -->
+            <div class="row g-4" id="carsGrid">
+                <div class="col-lg-4 col-md-6 car-item" data-category="luxury" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card border-0 shadow-sm h-100 car-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Mercedes S-Class" style="height: 250px; object-fit: cover;">
+                            <span class="badge bg-primary position-absolute top-0 start-0 m-3">New</span>
+                            <div class="car-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-light btn-lg rounded-pill">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Mercedes S-Class</h5>
+                            <p class="text-muted mb-3">Luxury Sedan</p>
+                            <div class="d-flex flex-wrap gap-3 mb-3 small">
+                                <span><i class="fas fa-gas-pump text-primary me-1"></i> V8 Engine</span>
+                                <span><i class="fas fa-tachometer-alt text-primary me-1"></i> 463 HP</span>
+                                <span><i class="fas fa-users text-primary me-1"></i> 5 Seats</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="text-primary fw-bold mb-0">$124,999</h4>
+                                <button class="btn btn-outline-danger btn-favorite">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 car-item" data-category="sports" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm h-100 car-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Porsche 911" style="height: 250px; object-fit: cover;">
+                            <span class="badge bg-warning position-absolute top-0 start-0 m-3">Popular</span>
+                            <div class="car-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-light btn-lg rounded-pill">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Porsche 911</h5>
+                            <p class="text-muted mb-3">Sports Car</p>
+                            <div class="d-flex flex-wrap gap-3 mb-3 small">
+                                <span><i class="fas fa-gas-pump text-primary me-1"></i> Turbo</span>
+                                <span><i class="fas fa-tachometer-alt text-primary me-1"></i> 443 HP</span>
+                                <span><i class="fas fa-users text-primary me-1"></i> 2 Seats</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="text-primary fw-bold mb-0">$169,999</h4>
+                                <button class="btn btn-outline-danger btn-favorite">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 car-item" data-category="suv" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm h-100 car-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Range Rover" style="height: 250px; object-fit: cover;">
+                            <span class="badge bg-info position-absolute top-0 start-0 m-3">Premium</span>
+                            <div class="car-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-light btn-lg rounded-pill">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Range Rover Sport</h5>
+                            <p class="text-muted mb-3">Luxury SUV</p>
+                            <div class="d-flex flex-wrap gap-3 mb-3 small">
+                                <span><i class="fas fa-gas-pump text-primary me-1"></i> V8 Hybrid</span>
+                                <span><i class="fas fa-tachometer-alt text-primary me-1"></i> 518 HP</span>
+                                <span><i class="fas fa-users text-primary me-1"></i> 7 Seats</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="text-primary fw-bold mb-0">$139,999</h4>
+                                <button class="btn btn-outline-danger btn-favorite">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 car-item" data-category="electric" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card border-0 shadow-sm h-100 car-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Tesla Model S" style="height: 250px; object-fit: cover;">
+                            <span class="badge bg-success position-absolute top-0 start-0 m-3">Eco</span>
+                            <div class="car-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-light btn-lg rounded-pill">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Tesla Model S</h5>
+                            <p class="text-muted mb-3">Electric Sedan</p>
+                            <div class="d-flex flex-wrap gap-3 mb-3 small">
+                                <span><i class="fas fa-bolt text-primary me-1"></i> Electric</span>
+                                <span><i class="fas fa-tachometer-alt text-primary me-1"></i> 1020 HP</span>
+                                <span><i class="fas fa-users text-primary me-1"></i> 5 Seats</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="text-primary fw-bold mb-0">$109,999</h4>
+                                <button class="btn btn-outline-danger btn-favorite">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 car-item" data-category="luxury" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card border-0 shadow-sm h-100 car-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="BMW 7 Series" style="height: 250px; object-fit: cover;">
+                            <div class="car-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-light btn-lg rounded-pill">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">BMW 7 Series</h5>
+                            <p class="text-muted mb-3">Executive Sedan</p>
+                            <div class="d-flex flex-wrap gap-3 mb-3 small">
+                                <span><i class="fas fa-gas-pump text-primary me-1"></i> V8 Twin-Turbo</span>
+                                <span><i class="fas fa-tachometer-alt text-primary me-1"></i> 523 HP</span>
+                                <span><i class="fas fa-users text-primary me-1"></i> 5 Seats</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="text-primary fw-bold mb-0">$119,999</h4>
+                                <button class="btn btn-outline-danger btn-favorite">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 car-item" data-category="sports" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card border-0 shadow-sm h-100 car-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Audi R8" style="height: 250px; object-fit: cover;">
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-3">Limited</span>
+                            <div class="car-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                <button class="btn btn-light btn-lg rounded-pill">View Details</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Audi R8</h5>
+                            <p class="text-muted mb-3">Supercar</p>
+                            <div class="d-flex flex-wrap gap-3 mb-3 small">
+                                <span><i class="fas fa-gas-pump text-primary me-1"></i> V10</span>
+                                <span><i class="fas fa-tachometer-alt text-primary me-1"></i> 602 HP</span>
+                                <span><i class="fas fa-users text-primary me-1"></i> 2 Seats</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="text-primary fw-bold mb-0">$199,999</h4>
+                                <button class="btn btn-outline-danger btn-favorite">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
+                    View All Cars <i class="fas fa-arrow-right ms-2"></i>
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="py-5 bg-light">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
-                <p class="section-description">Complete automotive solutions for your needs</p>
+            <div class="row mb-5">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold mb-3">Our <span class="text-primary">Services</span></h2>
+                    <p class="lead text-muted">Complete automotive solutions for your needs</p>
+                </div>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card border-0 shadow-sm h-100 service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-primary bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="fas fa-handshake fs-2"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Car Sales</h4>
+                            <p class="text-muted">Browse our extensive collection of new and certified pre-owned vehicles with competitive pricing and financing options.</p>
+                        </div>
                     </div>
-                    <h3>Car Sales</h3>
-                    <p>Browse our extensive collection of new and certified pre-owned vehicles with competitive pricing and financing options.</p>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm h-100 service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-success bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="fas fa-tools fs-2"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Service & Repair</h4>
+                            <p class="text-muted">Expert maintenance and repair services with genuine parts and certified technicians to keep your vehicle running smoothly.</p>
+                        </div>
                     </div>
-                    <h3>Service & Repair</h3>
-                    <p>Expert maintenance and repair services with genuine parts and certified technicians to keep your vehicle running smoothly.</p>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-credit-card"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card border-0 shadow-sm h-100 service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-warning bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="fas fa-credit-card fs-2"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Financing</h4>
+                            <p class="text-muted">Flexible financing solutions with competitive rates, quick approval process, and personalized payment plans.</p>
+                        </div>
                     </div>
-                    <h3>Financing</h3>
-                    <p>Flexible financing solutions with competitive rates, quick approval process, and personalized payment plans.</p>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card border-0 shadow-sm h-100 service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-info bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="fas fa-shield-alt fs-2"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Insurance</h4>
+                            <p class="text-muted">Comprehensive insurance coverage options with trusted partners to protect your investment and provide peace of mind.</p>
+                        </div>
                     </div>
-                    <h3>Insurance</h3>
-                    <p>Comprehensive insurance coverage options with trusted partners to protect your investment and provide peace of mind.</p>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-car-crash"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card border-0 shadow-sm h-100 service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-danger bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="fas fa-car-crash fs-2"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Trade-In</h4>
+                            <p class="text-muted">Get the best value for your current vehicle with our hassle-free trade-in process and fair market evaluations.</p>
+                        </div>
                     </div>
-                    <h3>Trade-In</h3>
-                    <p>Get the best value for your current vehicle with our hassle-free trade-in process and fair market evaluations.</p>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shipping-fast"></i>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card border-0 shadow-sm h-100 service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon bg-dark bg-gradient text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4">
+                                <i class="fas fa-shipping-fast fs-2"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Delivery</h4>
+                            <p class="text-muted">Convenient home delivery service for your new vehicle purchase, bringing the showroom experience to your doorstep.</p>
+                        </div>
                     </div>
-                    <h3>Delivery</h3>
-                    <p>Convenient home delivery service for your new vehicle purchase, bringing the showroom experience to your doorstep.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials">
+    <section class="py-5 bg-primary text-white">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What Our <span class="gradient-text">Customers Say</span></h2>
-                <p class="section-description">Real experiences from satisfied customers</p>
+            <div class="row mb-5">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h2 class="display-5 fw-bold mb-3">What Our <span class="text-warning">Customers Say</span></h2>
+                    <p class="lead opacity-75">Real experiences from satisfied customers</p>
+                </div>
             </div>
             
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"Exceptional service and quality vehicles. The team at Elite Motors made my car buying experience smooth and enjoyable. Highly recommended!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="John Smith">
-                        <div class="author-info">
-                            <h4>John Smith</h4>
-                            <p>Business Executive</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"Outstanding customer service and an impressive selection of luxury vehicles. The financing process was quick and transparent."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sarah Johnson">
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>Entrepreneur</p>
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="card bg-white bg-opacity-10 border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="text-warning mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="mb-4">"Exceptional service and quality vehicles. The team at Elite Motors made my car buying experience smooth and enjoyable. Highly recommended!"</p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                     alt="John Smith" class="rounded-circle me-3" width="60" height="60" style="object-fit: cover;">
+                                <div>
+                                    <h6 class="fw-bold mb-0">John Smith</h6>
+                                    <small class="opacity-75">Business Executive</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card bg-white bg-opacity-10 border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="text-warning mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="mb-4">"Outstanding customer service and an impressive selection of luxury vehicles. The financing process was quick and transparent."</p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                     alt="Sarah Johnson" class="rounded-circle me-3" width="60" height="60" style="object-fit: cover;">
+                                <div>
+                                    <h6 class="fw-bold mb-0">Sarah Johnson</h6>
+                                    <small class="opacity-75">Entrepreneur</small>
+                                </div>
+                            </div>
                         </div>
-                        <p>"Professional staff, premium vehicles, and excellent after-sales service. Elite Motors exceeded all my expectations!"</p>
                     </div>
-                    <div class="testimonial-author">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Michael Brown">
-                        <div class="author-info">
-                            <h4>Michael Brown</h4>
-                            <p>Doctor</p>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card bg-white bg-opacity-10 border-0 h-100">
+                        <div class="card-body p-4">
+                            <div class="text-warning mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="mb-4">"Professional staff, premium vehicles, and excellent after-sales service. Elite Motors exceeded all my expectations!"</p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
+                                     alt="Michael Brown" class="rounded-circle me-3" width="60" height="60" style="object-fit: cover;">
+                                <div>
+                                    <h6 class="fw-bold mb-0">Michael Brown</h6>
+                                    <small class="opacity-75">Doctor</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -428,140 +519,202 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="py-5">
         <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Get in <span class="gradient-text">Touch</span></h2>
-                    <p>Ready to find your dream car? Contact us today and let our experts help you choose the perfect vehicle.</p>
+            <div class="row g-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="display-6 fw-bold mb-4">Get in <span class="text-primary">Touch</span></h2>
+                    <p class="lead text-muted mb-4">Ready to find your dream car? Contact us today and let our experts help you choose the perfect vehicle.</p>
                     
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Visit Our Showroom</h4>
-                                <p>123 Luxury Lane, Elite District<br>New York, NY 10001</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Call Us</h4>
-                                <p>+1 (555) 123-4567<br>Mon - Sat: 9AM - 8PM</p>
+                    <div class="row g-4 mb-4">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-map-marker-alt fs-5"></i>
+                                    </div>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="fw-bold mb-1">Visit Our Showroom</h5>
+                                    <p class="text-muted mb-0">123 Luxury Lane, Elite District<br>New York, NY 10001</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
+                        <div class="col-12">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-phone fs-5"></i>
+                                    </div>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="fw-bold mb-1">Call Us</h5>
+                                    <p class="text-muted mb-0">+1 (555) 123-4567<br>Mon - Sat: 9AM - 8PM</p>
+                                </div>
                             </div>
-                            <div class="contact-text">
-                                <h4>Email Us</h4>
-                                <p>info@elitemotors.com<br>sales@elitemotors.com</p>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-envelope fs-5"></i>
+                                    </div>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="fw-bold mb-1">Email Us</h5>
+                                    <p class="text-muted mb-0">info@elitemotors.com<br>sales@elitemotors.com</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-primary btn-lg rounded-circle">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-info btn-lg rounded-circle">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-danger btn-lg rounded-circle">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-dark btn-lg rounded-circle">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-5">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="name" class="form-label fw-semibold">Your Name *</label>
+                                        <input type="text" class="form-control form-control-lg" id="name" name="name" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="email" class="form-label fw-semibold">Your Email *</label>
+                                        <input type="email" class="form-control form-control-lg" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="phone" class="form-label fw-semibold">Your Phone</label>
+                                        <input type="tel" class="form-control form-control-lg" id="phone" name="phone">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="interest" class="form-label fw-semibold">Your Interest</label>
+                                        <select class="form-select form-select-lg" id="interest" name="interest">
+                                            <option value="">Select Your Interest</option>
+                                            <option value="buy">Buy a Car</option>
+                                            <option value="sell">Sell My Car</option>
+                                            <option value="service">Service & Repair</option>
+                                            <option value="financing">Financing</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label fw-semibold">Your Message *</label>
+                                        <textarea class="form-control form-control-lg" id="message" name="message" rows="4" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary btn-lg w-100 py-3">
+                                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Your Phone">
-                        </div>
-                        <div class="form-group">
-                            <select id="interest" name="interest">
-                                <option value="">Select Your Interest</option>
-                                <option value="buy">Buy a Car</option>
-                                <option value="sell">Sell My Car</option>
-                                <option value="service">Service & Repair</option>
-                                <option value="financing">Financing</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="bg-dark text-white py-5">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-car"></i> Elite Motors</h3>
-                    <p>Your trusted partner for premium automotive solutions. Experience luxury, drive excellence.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-car text-primary me-2"></i>Elite Motors
+                    </h5>
+                    <p class="mb-4">Your trusted partner for premium automotive solutions. Experience luxury, drive excellence.</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-circle">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-info btn-sm rounded-circle">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-danger btn-sm rounded-circle">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-circle">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#cars">Cars</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#cars" class="text-white-50 text-decoration-none">Cars</a></li>
+                        <li class="mb-2"><a href="#services" class="text-white-50 text-decoration-none">Services</a></li>
+                        <li class="mb-2"><a href="#about" class="text-white-50 text-decoration-none">About</a></li>
+                        <li class="mb-2"><a href="#contact" class="text-white-50 text-decoration-none">Contact</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">New Cars</a></li>
-                        <li><a href="#">Used Cars</a></li>
-                        <li><a href="#">Car Service</a></li>
-                        <li><a href="#">Financing</a></li>
-                        <li><a href="#">Insurance</a></li>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">Services</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">New Cars</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Used Cars</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Car Service</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Financing</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Insurance</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <div class="footer-contact">
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Lane, NY 10001</p>
-                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-                        <p><i class="fas fa-envelope"></i> info@elitemotors.com</p>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <div class="mb-2">
+                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                        <small>123 Luxury Lane, NY 10001</small>
+                    </div>
+                    <div class="mb-2">
+                        <i class="fas fa-phone text-primary me-2"></i>
+                        <small>+1 (555) 123-4567</small>
+                    </div>
+                    <div class="mb-2">
+                        <i class="fas fa-envelope text-primary me-2"></i>
+                        <small>info@elitemotors.com</small>
                     </div>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2024 Elite Motors. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-white-50">&copy; 2024 Elite Motors. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
 </html>
