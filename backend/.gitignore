@@ -1,0 +1,7 @@
+vendor
+.env
+storage
+public/uploads
+.idea
+.phpunit.cache
+.DS_Store
