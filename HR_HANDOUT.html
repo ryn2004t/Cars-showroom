@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Service Provider Web Dashboard — HR Handout</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 40px; color: #111; }
+    h1, h2 { margin: 0 0 12px; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; margin-top: 28px; }
+    code, pre { background: #f6f8fa; padding: 2px 6px; border-radius: 6px; }
+    pre { padding: 12px; overflow: auto; }
+    ul { margin: 8px 0 8px 20px; }
+    .muted { color: #555; }
+    .box { border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <h1>Service Provider Web Dashboard — HR Handout</h1>
+  <div class="box">
+    <h2>What this prototype shows</h2>
+    <ul>
+      <li>Provider login and protected dashboard</li>
+      <li>Jobs, Customers, Media uploads</li>
+      <li>Invoices, Promotions, Reviews</li>
+      <li>Analytics summary and editable Settings</li>
+    </ul>
+  </div>
+
+  <h2>How to run (Docker)</h2>
+  <ol>
+    <li>Install Docker + Docker Compose</li>
+    <li>In the project root, run:<br>
+      <pre><code>docker compose up -d --build</code></pre>
+    </li>
+    <li>Initialize database (first run only):
+      <pre><code>docker compose exec db sh -lc "mysql -uroot -proot service_provider &lt; /app/database/schema.sql"
+docker compose exec db sh -lc "mysql -uroot -proot service_provider &lt; /app/database/seed.sql"</code></pre>
+    </li>
+    <li>Open the prototype:
+      <ul>
+        <li>Frontend: <code>http://localhost:5173</code></li>
+        <li>Backend API: <code>http://localhost:8080/api</code></li>
+        <li>phpMyAdmin: <code>http://localhost:8081</code> (server: <code>db</code>, user: <code>root</code>, pass: <code>root</code>)</li>
+      </ul>
+    </li>
+  </ol>
+  <p class="box"><strong>Demo login:</strong> <code>demo@example.com</code> / <code>DemoPass123!</code></p>
+
+  <h2>Pages to click through</h2>
+  <ul>
+    <li>Dashboard (upcoming jobs summary)</li>
+    <li>Jobs (placeholder)</li>
+    <li>Customers (placeholder list)</li>
+    <li>Media (upload UI comes later; endpoint is ready)</li>
+    <li>Invoices (list)</li>
+    <li>Promotions (list)</li>
+    <li>Reviews (list)</li>
+    <li>Analytics (KPIs)</li>
+    <li>Settings (key-value editor)</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <ul>
+    <li>Tech stack: React + Vite (TypeScript), PHP 8.0 (JWT), MySQL 8.0</li>
+    <li>Security: CORS and headers enabled, JWT auth, validated inputs</li>
+    <li>DB managed with phpMyAdmin; schema and seed included</li>
+  </ul>
+
+  <p class="muted">For engineering follow-ups, please share this repo link and handout with the dev team.</p>
+</body>
+</html>
