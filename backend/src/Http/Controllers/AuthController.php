@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Security\JwtAuth;
+use App\Repositories\UserRepository;
 use App\Support\RequestValidator;
 use App\Support\ResponseFactory;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,21 +24,20 @@ final class AuthController
             return ResponseFactory::json(['message' => 'Invalid input', 'errors' => $errors], 422);
         }
 
-        // TODO: Replace with real user lookup and password verify
         $email = strtolower(trim($input['email']));
-        $isDemo = $email === 'demo@example.com' && $input['password'] === 'DemoPass123!';
-        if (!$isDemo) {
-            // Hide which field failed
+        $repo = new UserRepository();
+        $user = $repo->findByEmail($email);
+        if (!$user || !password_verify($input['password'], $user['password_hash'])) {
             return ResponseFactory::json(['message' => 'Invalid credentials'], 401);
         }
 
         $jwt = new JwtAuth();
-        $token = $jwt->issue(['sub' => 'user-1', 'role' => 'owner']);
+        $token = $jwt->issue(['sub' => (string)$user['id'], 'role' => (string)($user['role'] ?? 'staff')]);
 
         return ResponseFactory::json([
             'token' => $token,
-            'userId' => 'user-1',
-            'role' => 'owner',
+            'userId' => (string)$user['id'],
+            'role' => (string)($user['role'] ?? 'staff'),
         ]);
     }
 }

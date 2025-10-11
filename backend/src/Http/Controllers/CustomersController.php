@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Support\ResponseFactory;
+use App\Repositories\CustomerRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -12,11 +13,12 @@ final class CustomersController
 {
     public function list(Request $request): Response
     {
-        // Stub list; replace with DB access later
-        $customers = [
-            [ 'id' => 'cust-1', 'name' => 'Alex Johnson', 'phone' => '+1 555-0100' ],
-            [ 'id' => 'cust-2', 'name' => 'Maria Garcia', 'phone' => '+1 555-0111' ],
-        ];
-        return ResponseFactory::json($customers);
+        try {
+            $repo = new CustomerRepository();
+            $customers = $repo->listRecent(50);
+            return ResponseFactory::json($customers);
+        } catch (\Throwable $e) {
+            return ResponseFactory::json(['message' => 'Failed to fetch customers'], 500);
+        }
     }
 }
