@@ -71,19 +71,33 @@ final class Kernel
             case Dispatcher::METHOD_NOT_ALLOWED:
                 return ResponseFactory::json(['message' => 'Method not allowed'], 405);
             case Dispatcher::FOUND:
-                [$class, $method] = $routeInfo[1];
+                $handler = $routeInfo[1];
                 $vars = $routeInfo[2];
-                $controller = new $class();
-                // Guard routes that are not auth endpoints
-                if (!($controller instanceof Controllers\AuthController)) {
-                    $auth = new JwtAuth();
-                    $user = $auth->authenticateFromRequest($request);
-                    if ($user === null) {
-                        return ResponseFactory::json(['message' => 'Unauthorized'], 401);
-                    }
-                    $request->attributes->set('user', $user);
+
+                // If the handler is a callable (e.g., a Closure for health routes), call it directly
+                if (is_callable($handler) && !is_array($handler)) {
+                    return $handler();
                 }
-                return $controller->$method($request, $vars);
+
+                // Otherwise expect [ControllerClass, 'method']
+                if (is_array($handler) && count($handler) === 2) {
+                    [$class, $method] = $handler;
+                    $controller = new $class();
+
+                    // Guard routes that are not auth endpoints
+                    if (!($controller instanceof Controllers\AuthController)) {
+                        $auth = new JwtAuth();
+                        $user = $auth->authenticateFromRequest($request);
+                        if ($user === null) {
+                            return ResponseFactory::json(['message' => 'Unauthorized'], 401);
+                        }
+                        $request->attributes->set('user', $user);
+                    }
+
+                    return $controller->$method($request, $vars);
+                }
+
+                return ResponseFactory::json(['message' => 'Bad route handler'], 500);
         }
 
         return ResponseFactory::json(['message' => 'Unhandled'], 500);
