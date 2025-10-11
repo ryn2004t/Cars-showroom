@@ -21,7 +21,25 @@ final class Kernel
     public function __construct()
     {
         $this->dispatcher = simpleDispatcher(function (RouteCollector $r) {
-            $r->addRoute('OPTIONS', '/{any:.*}', fn () => new Response('', 204));
+            // Health/info routes
+            $r->addRoute('GET', '/', fn () => new Response('Backend OK', 200, ['Content-Type' => 'text/plain']));
+            $r->addRoute('GET', '/api', fn () => ResponseFactory::json([
+                'status' => 'ok',
+                'routes' => [
+                    'POST /api/auth/login',
+                    'GET  /api/jobs',
+                    'GET  /api/customers',
+                    'POST /api/media/upload',
+                    'GET  /api/invoices',
+                    'GET  /api/promotions',
+                    'GET  /api/reviews',
+                    'GET  /api/analytics/summary',
+                    'GET  /api/settings',
+                    'PUT  /api/settings',
+                ],
+            ]));
+            // Preflight only under /api/*
+            $r->addRoute('OPTIONS', '/api/{any:.*}', fn () => new Response('', 204));
             $r->addRoute('POST', '/api/auth/login', [Controllers\AuthController::class, 'login']);
             $r->addRoute('GET', '/api/jobs', [Controllers\JobsController::class, 'list']);
             $r->addRoute('GET', '/api/customers', [Controllers\CustomersController::class, 'list']);
