@@ -18,10 +18,15 @@ final class PromotionRepository
 
     public function listActive(): array
     {
-        $now = (new \DateTimeImmutable('now'))->format('Y-m-d H:i:s');
-        $sql = 'SELECT id, name, description, discount_percent AS discountPercent, active_from AS activeFrom, active_to AS activeTo FROM promotions WHERE (active_from IS NULL OR active_from <= :now) AND (active_to IS NULL OR active_to >= :now) ORDER BY active_from DESC';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['now' => $now]);
-        return $stmt->fetchAll();
+        try {
+            $now = (new \DateTimeImmutable('now'))->format('Y-m-d H:i:s');
+            $sql = 'SELECT id, name, description, discount_percent AS discountPercent, active_from AS activeFrom, active_to AS activeTo FROM promotions WHERE (active_from IS NULL OR active_from <= :now) AND (active_to IS NULL OR active_to >= :now) ORDER BY COALESCE(active_from, created_at) DESC';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(['now' => $now]);
+            return $stmt->fetchAll();
+        } catch (\Throwable $e) {
+            // Table or column missing: return empty for resilience in prototype
+            return [];
+        }
     }
 }
