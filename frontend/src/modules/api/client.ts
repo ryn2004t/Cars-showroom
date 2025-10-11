@@ -60,5 +60,14 @@ export function createApiClient(options: ApiClientOptions = {}) {
       }),
     getJobs: () => request<any[]>('/jobs', { method: 'GET' }),
     getCustomers: () => request<any[]>('/customers', { method: 'GET' }),
+    getInvoices: () => request<any[]>('/invoices', { method: 'GET' }),
+    getPromotions: () => request<any[]>('/promotions', { method: 'GET' }),
+    getReviews: () => request<any[]>('/reviews', { method: 'GET' }),
+    getAnalyticsSummary: () => request<any>('/analytics/summary', { method: 'GET' }),
+    getSettings: () => request<Record<string, string>>('/settings', { method: 'GET' }),
+    updateSettings: (data: Record<string, string>) => request<{ ok: boolean }>('/settings', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
   };
 }

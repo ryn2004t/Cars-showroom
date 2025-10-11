@@ -32,3 +32,36 @@ export interface JobSummary {
   status: 'requested' | 'confirmed' | 'in_progress' | 'completed' | 'cancelled';
   customerId: string;
 }
+
+export interface InvoiceSummary {
+  id: string;
+  invoiceNumber: string;
+  jobId: string;
+  totalAmount: number;
+  status: 'draft' | 'sent' | 'paid' | 'void';
+  createdAt: string; // ISO date
+}
+
+export interface Promotion {
+  id: string;
+  name: string;
+  description?: string;
+  discountPercent?: number;
+  activeFrom?: string | null;
+  activeTo?: string | null;
+}
+
+export interface ReviewItem {
+  id: string;
+  rating: number;
+  comment?: string;
+  customerId: string;
+  createdAt: string;
+}
+
+export interface AnalyticsSummary {
+  jobsTotal: number;
+  jobsCompleted: number;
+  revenueTotal: number;
+  avgRating: number;
+}

@@ -26,6 +26,12 @@ final class Kernel
             $r->addRoute('GET', '/api/jobs', [Controllers\JobsController::class, 'list']);
             $r->addRoute('GET', '/api/customers', [Controllers\CustomersController::class, 'list']);
             $r->addRoute('POST', '/api/media/upload', [Controllers\MediaController::class, 'upload']);
+            $r->addRoute('GET', '/api/invoices', [Controllers\InvoicesController::class, 'list']);
+            $r->addRoute('GET', '/api/promotions', [Controllers\PromotionsController::class, 'list']);
+            $r->addRoute('GET', '/api/reviews', [Controllers\ReviewsController::class, 'list']);
+            $r->addRoute('GET', '/api/analytics/summary', [Controllers\AnalyticsController::class, 'summary']);
+            $r->addRoute('GET', '/api/settings', [Controllers\SettingsController::class, 'get']);
+            $r->addRoute('PUT', '/api/settings', [Controllers\SettingsController::class, 'update']);
         });
     }
 
